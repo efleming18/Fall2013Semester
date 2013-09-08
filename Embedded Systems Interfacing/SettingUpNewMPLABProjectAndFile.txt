@@ -1,0 +1,10 @@
+Choose Project: Microchip Embedded -> Stand Alone Project
+Select Device: Project -> PIC24FJ128GA010
+Select Header: None
+Select Tool: ICD3
+Select Compiler: XC16
+Select Project Name and Folder: 1-HelloWorld
+
+Make a New File:
+Expand "Microchip Embedded" and choose XC16 Compiler
+Select "mainXC16.c" type (or you can write your program anywhere and add into the project)
