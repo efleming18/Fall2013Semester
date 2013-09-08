@@ -8,3 +8,52 @@ Select Project Name and Folder: 1-HelloWorld
 Make a New File:
 Expand "Microchip Embedded" and choose XC16 Compiler
 Select "mainXC16.c" type (or you can write your program anywhere and add into the project)
+
+
+int main(void) {
+	TRISB = 0;
+	AD1PCFG = 0xffff;
+	PORTB = 0xfe;
+	return 0;
+}
+
+void delay(int Delay)
+{
+	TMR1 = 0;
+	while (TMR1 < Delay) {}
+}
+
+void blink(int Delay)
+{
+	while (1) {
+		PORTB = 0x76;
+		delay(Delay);
+		PORTB = 0;
+		delay(Delay);
+	}
+}
+
+void pattern(int Delay)
+{
+	char bitmap[12] = {
+	0xff, 0xfe, 0xfd, 0xfc, 0xfb, 0xfa, 0xf9, 0xf8, 0xf7, 0xf6, 0xf5, 0xf4,
+	};
+	int i;
+	for (i = 0; i < 12; i++){
+		PORTB = bitmap[i];
+		delay(Delay);
+	}
+}
+
+TRISB = 0;
+T1CON = 0x8030
+
+PORTB = 0x76;
+TMR1 = 0;
+while (TMR1 < 16000) {}
+
+PORTB = 0;
+TMR1 = 0;
+while (TMR1 < 16000) {}
+
+return 0;
